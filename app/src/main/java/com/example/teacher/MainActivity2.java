@@ -50,7 +50,6 @@ public class MainActivity2 extends AppCompatActivity {
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
