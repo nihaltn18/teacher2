@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">teacher</string>
+    <string name="signin">SIGN-IN</string>
+    <string name="signout">SIGN-OUT</string>
+    <string name="addclass">ADD Class</string>
+    <string name="className">Class Name</string>
+    <string name="classCode">Class Code</string>
+</resources>
