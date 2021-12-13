@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    RecyclerViewAdapter adapter;
     RecyclerView recyclerView;
     ArrayList<String> name;
     ArrayList<String> code;
