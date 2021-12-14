@@ -98,7 +98,7 @@ public class addclass extends AppCompatActivity{
 
                     FirebaseDatabase.getInstance().getReference().child("teachercode").setValue(teachercodelist);
                 }
-                startActivity(new Intent(addclass.this,MainActivity2.class));
+                finish();
             }
         });
 
