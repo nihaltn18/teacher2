@@ -66,7 +66,7 @@ public class MainActivity2 extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.searchclass:
-                //what to do when user clicks on search bar
+                //TODO (what to do when user clicks on search bar)
 
                 break;
             case R.id.addClass:
