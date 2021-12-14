@@ -49,7 +49,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(itemView);
             nameView = itemView.findViewById(R.id.classname2);
             codeView = itemView.findViewById(R.id.classcode2);
-            pos = getAdapterPosition();
             itemView.setOnClickListener(this);
         }
 
@@ -57,7 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void onClick(View v) {
             //what to do when clicked on particular item
             Intent intent = new Intent(context,MainActivity3.class);
-            intent.putExtra("classcode",code.get(pos));
+            intent.putExtra("classcode",code.get(this.getAdapterPosition()));
             context.startActivity(intent);
         }
     }
