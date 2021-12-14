@@ -68,11 +68,6 @@ public class addclass extends AppCompatActivity{
         });
         Log.d("msg", "onCreate() returned: " + codelist.toString());
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,4 +103,5 @@ public class addclass extends AppCompatActivity{
         });
 
     }
+
 }
