@@ -31,6 +31,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         name = new ArrayList<>();
         code = new ArrayList<>();
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(MainActivity2.this,name,code);
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -44,7 +45,6 @@ public class MainActivity2 extends AppCompatActivity {
                     name.add(obj.getClass_name());
                     code.add(obj.getClass_code());
                 }
-                RecyclerViewAdapter adapter = new RecyclerViewAdapter(MainActivity2.this,name,code);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -55,6 +55,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
