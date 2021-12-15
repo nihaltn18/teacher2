@@ -1,5 +1,7 @@
 package com.example.teacher;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 public class ClassObj {
     String Class_name;
@@ -10,7 +12,7 @@ public class ClassObj {
         Class_name = class_name;
         Class_code = class_code;
         students = new ArrayList<>();
-        students.add(new Student(0,"nihal"));
+        students.add(new Student(0,"nihal", FirebaseAuth.getInstance().getCurrentUser().getUid()));
     }
     @Override
     public String toString() {

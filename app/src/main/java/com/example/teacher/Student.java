@@ -4,13 +4,24 @@ public class Student{
     String name;
     ArrayList<String> date;
     ArrayList<Boolean> attendance;
-    public Student(int i,String name)
+    String studentCode;
+
+    public String getStudentCode() {
+        return studentCode;
+    }
+
+    public void setStudentCode(String studentCode) {
+        this.studentCode = studentCode;
+    }
+
+    public Student(int i, String name, String scode)
     {
         date = new ArrayList<>();
         attendance = new ArrayList<>();
         date.add("23/06/2001");
         attendance.add(true);
         this.name = name;
+        this.studentCode = scode;
     }
 
     public String getName() {
@@ -43,6 +54,7 @@ public class Student{
                 "name='" + name + '\'' +
                 ", date=" + date +
                 ", attendance=" + attendance +
+                ", studentCode='" + studentCode + '\'' +
                 '}';
     }
 
