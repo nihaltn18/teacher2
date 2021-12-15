@@ -1,16 +1,19 @@
 package com.example.teacher;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     Context context;
@@ -49,15 +52,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(itemView);
             nameView = itemView.findViewById(R.id.classname2);
             codeView = itemView.findViewById(R.id.classcode2);
+            pos = this.getAdapterPosition();
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             //what to do when clicked on particular item
-            Intent intent = new Intent(context,MainActivity3.class);
-            intent.putExtra("classcode",code.get(this.getAdapterPosition()));
-            context.startActivity(intent);
+            Calendar calendar = Calendar.getInstance();
+            DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    Intent intent = new Intent(context,MainActivity3.class);
+                    intent.putExtra("date",Integer.toString(dayOfMonth)+"/"+Integer.toString(month+1)+"/"+Integer.toString(year));
+                    intent.putExtra("classcode",code.get(getAdapterPosition()));
+                    context.startActivity(intent);
+                }
+            },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
+            datePickerDialog.show();
         }
     }
 }

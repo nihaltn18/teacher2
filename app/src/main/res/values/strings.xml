@@ -5,4 +5,5 @@
     <string name="addclass">ADD Class</string>
     <string name="className">Class Name</string>
     <string name="classCode">Class Code</string>
+    <string name="present">Present</string>
 </resources>
