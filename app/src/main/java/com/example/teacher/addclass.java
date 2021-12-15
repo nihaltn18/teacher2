@@ -77,7 +77,7 @@ public class addclass extends AppCompatActivity{
                 {
                     //class already exist
                     Log.d(TAG, "onClick() returned: " + "cant add");
-                    Toast.makeText(addclass.this, "ClassObj already exist", Toast.LENGTH_LONG).show();
+                    Toast.makeText(addclass.this, "Class already exist", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
