@@ -19,6 +19,30 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
     ArrayList<Boolean> attendance;
     Context context;
 
+    public ArrayList<String> getStudents() {
+        return students;
+    }
+
+    public void setStudents(ArrayList<String> students) {
+        this.students = students;
+    }
+
+    public ArrayList<Boolean> getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(ArrayList<Boolean> attendance) {
+        this.attendance = attendance;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
     public StudentAdapter(ArrayList<String> students, ArrayList<Boolean> attendance, Context context) {
         this.students = students;
         this.attendance = attendance;
