@@ -26,13 +26,14 @@ public class addclass extends AppCompatActivity{
 
     Button add;
     EditText classcode,classname;
-    ArrayList<String> codelist, teachercodelist;
+    ArrayList<String> codelist, teachercodelist,classnames;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addclass);
         codelist = new ArrayList<String>();
         teachercodelist = new ArrayList<>();
+        classnames = new ArrayList<>();
         add = findViewById(R.id.add);
         classcode = findViewById(R.id.classcode);
         classname = findViewById(R.id.classname);
@@ -58,6 +59,20 @@ public class addclass extends AppCompatActivity{
                 for(DataSnapshot snapshot1:snapshot.getChildren())
                 {
                     teachercodelist.add(snapshot1.getValue(String.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        FirebaseDatabase.getInstance().getReference().child("classname").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1:snapshot.getChildren())
+                {
+                    classnames.add(snapshot1.getValue(String.class));
                 }
             }
 
@@ -94,9 +109,11 @@ public class addclass extends AppCompatActivity{
                     DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("classcode");
                     codelist.add(classcode.getText().toString());
                     teachercodelist.add(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    classnames.add(classname.getText().toString());
                     reference2.setValue(codelist);
-
                     FirebaseDatabase.getInstance().getReference().child("teachercode").setValue(teachercodelist);
+                    FirebaseDatabase.getInstance().getReference().child("classname").setValue(classnames);
+
                 }
                 startActivity(new Intent(addclass.this,MainActivity2.class));
             }
