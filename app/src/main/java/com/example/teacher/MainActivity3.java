@@ -72,8 +72,12 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         //(TODO) what to do when clicked on submit attendance
-        SubmitAttendance();
-
+        switch (item.getItemId())
+        {
+            case R.id.done:
+                SubmitAttendance();
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
     public void SubmitAttendance()
