@@ -77,6 +77,11 @@ public class MainActivity3 extends AppCompatActivity {
             case R.id.done:
                 SubmitAttendance();
                 break;
+            case R.id.show:
+                Intent intent = new Intent(MainActivity3.this,MainActivity4.class);
+                intent.putExtra("code",classcode);
+                intent.putExtra("tcode",FirebaseAuth.getInstance().getCurrentUser().getUid());
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
