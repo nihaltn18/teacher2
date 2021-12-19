@@ -8,4 +8,11 @@
     android:orderInCategory="1"
     android:id="@+id/done"
     />
+    <item
+        android:title="show"
+        android:icon="@drawable/show"
+        app:showAsAction="always"
+        android:orderInCategory="1"
+        android:id="show"
+        />
 </menu>
