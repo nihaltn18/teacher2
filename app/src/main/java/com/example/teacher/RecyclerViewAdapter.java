@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements Filterable {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
     Context context;
     ArrayList<String> name;
     ArrayList<String> code;
@@ -46,12 +46,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return name.size();
     }
-
-    @Override
-    public Filter getFilter() {
-        return null;
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView nameView,codeView;
         int pos;

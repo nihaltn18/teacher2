@@ -25,6 +25,8 @@ public class MainActivity2 extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<String> name;
     ArrayList<String> code;
+    RecyclerViewAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         name = new ArrayList<>();
         code = new ArrayList<>();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(MainActivity2.this,name,code);
+        adapter = new RecyclerViewAdapter(MainActivity2.this,name,code);
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -60,19 +62,6 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu1,menu);
-        MenuItem item = menu.findItem(R.id.searchclass);
-        SearchView searchView = (SearchView) item.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
         return super.onCreateOptionsMenu(menu);
     }
 
