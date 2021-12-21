@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,13 +55,14 @@ public class SAdapter extends RecyclerView.Adapter<SAdapter.ViewHolder> {
         ArrayList<Boolean> attendance = students.get(position).getAttendance();
         int tot = attendance.size()-1;
         int present = Collections.frequency(attendance,true)-1;
+        double per=((double)present/tot);
         if(present==0)
         {
             holder.percentage.setText("0.0");
         }
         else
         {
-            holder.percentage.setText(Float.toString((present/tot)*100));
+            holder.percentage.setText(Double.toString(per*100));
         }
     }
 
