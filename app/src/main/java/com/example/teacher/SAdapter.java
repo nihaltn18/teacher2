@@ -62,7 +62,7 @@ public class SAdapter extends RecyclerView.Adapter<SAdapter.ViewHolder> {
         }
         else
         {
-            holder.percentage.setText(Double.toString(per*100));
+            holder.percentage.setText(String.format("%.2f", per * 100));
         }
     }
 
