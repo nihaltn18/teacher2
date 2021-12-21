@@ -37,6 +37,7 @@ public class MainActivity4 extends AppCompatActivity {
                 obj = task.getResult().getValue(ClassObj.class);
                 adapter = new SAdapter(MainActivity4.this,obj);
                 recyclerView.setAdapter(adapter);
+                getSupportActionBar().setTitle(obj.getClass_name());
                 adapter.notifyDataSetChanged();
             }
         });

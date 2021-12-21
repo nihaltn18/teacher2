@@ -26,6 +26,7 @@ public class MainActivity5 extends AppCompatActivity {
         Intent intent = getIntent();
         date = intent.getStringArrayListExtra("date");
         name = intent.getStringExtra("name");
+        getSupportActionBar().setTitle(name);
         if(date!=null)
         {
             attendance = intent.getStringArrayListExtra("attendance");

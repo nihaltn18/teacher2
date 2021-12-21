@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#457b9d"
     tools:context=".addclass">
 
     <LinearLayout
@@ -22,6 +23,7 @@
             android:layout_margin="10dp"
             android:text="@string/addclass"
             android:textAlignment="center"
+            android:textColor="#1d3557"
             android:textSize="52sp" />
 
         <EditText
@@ -32,6 +34,7 @@
             android:ems="10"
             android:hint="@string/className"
             android:inputType="textPersonName"
+            android:textColor="#1d3557"
             android:textSize="52sp" />
 
         <EditText
@@ -42,6 +45,7 @@
             android:ems="10"
             android:hint="@string/classCode"
             android:inputType="textPersonName"
+            android:textColor="#1d3557"
             android:textSize="52sp" />
 
         <Button
@@ -49,6 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@string/addclass" />
+            android:background="@drawable/buttonbg1"
+            android:text="@string/addclass"
+            android:textColor="#1d3557" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

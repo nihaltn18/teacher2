@@ -67,6 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     Intent intent = new Intent(context,MainActivity3.class);
                     intent.putExtra("date",Integer.toString(dayOfMonth)+"/"+Integer.toString(month+1)+"/"+Integer.toString(year));
                     intent.putExtra("classcode",code.get(getAdapterPosition()));
+                    intent.putExtra("name",name.get(getAdapterPosition()));
                     context.startActivity(intent);
                 }
             },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));

@@ -39,6 +39,7 @@ public class MainActivity3 extends AppCompatActivity {
         Intent intent = getIntent();
         date = intent.getStringExtra("date");
         classcode = intent.getStringExtra("classcode");
+        getSupportActionBar().setTitle(intent.getStringExtra("name")+" "+date);
         studentsnamelist = new ArrayList<>();
         attendancelist = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler);

@@ -7,8 +7,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="2dp"
         android:background="#8BC34A"
+        app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,8 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:background="#FF9800"
+            android:background="#000000"
             android:orientation="horizontal">
 
             <TextView
@@ -28,6 +30,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="TextView"
+                android:textColor="#D8903E"
                 android:textSize="30sp" />
 
             <TextView
@@ -37,6 +40,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="TextView"
+                android:textColor="#D8903E"
                 android:textSize="20sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -8,6 +8,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#e07a5f"
             android:orientation="horizontal">
 
             <TextView
@@ -25,7 +28,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="TextView"
-                android:textSize="20sp" />
+                android:textColor="#3d405b"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/percentage"
@@ -34,7 +38,8 @@
                 android:layout_weight="1"
                 android:text="TextView"
                 android:textAlignment="viewEnd"
-                android:textSize="20sp" />
+                android:textColor="#3d405b"
+                android:textSize="24sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
