@@ -10,6 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,6 +51,8 @@ public class MainActivity2 extends AppCompatActivity {
                     name.add(obj.getClass_name());
                     code.add(obj.getClass_code());
                 }
+                ProgressBar progressBar = findViewById(R.id.progressBar);
+                progressBar.setVisibility(View.INVISIBLE);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
