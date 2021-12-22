@@ -11,7 +11,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="2dp"
         android:background="#8BC34A"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +29,7 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:paddingLeft="3dp"
                 android:text="TextView"
                 android:textColor="#D8903E"
                 android:textSize="30sp" />
@@ -39,6 +40,7 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:paddingRight="3dp"
                 android:text="TextView"
                 android:textColor="#D8903E"
                 android:textSize="20sp" />
