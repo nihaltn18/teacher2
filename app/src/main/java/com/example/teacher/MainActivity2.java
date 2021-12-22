@@ -67,7 +67,36 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu1,menu);
+        MenuItem menuItem = menu.findItem(R.id.searchclass);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void filter(String newText) {
+        ArrayList<String> fname,fcode;
+        fname = new ArrayList<>();
+        fcode = new ArrayList<>();
+        for(String s:code)
+        {
+            if(s.toLowerCase().contains(newText.toLowerCase()))
+            {
+                fcode.add(s);
+                fname.add(name.get(code.indexOf(s)));
+            }
+        }
+        adapter.filterList(fcode,fname);
     }
 
     @Override

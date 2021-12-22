@@ -46,6 +46,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return name.size();
     }
+
+    public void filterList(ArrayList<String> fcode, ArrayList<String> fname) {
+        name = fname;
+        code = fcode;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView nameView,codeView;
         int pos;
