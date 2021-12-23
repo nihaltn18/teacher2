@@ -35,10 +35,10 @@ public class MainActivity4 extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 obj = task.getResult().getValue(ClassObj.class);
-                if(obj.getStudents().get(0).getName().equals("blahblahblah"))
-                {
-                    obj.students.remove(0);
-                }
+//                if(obj.getStudents().get(0).getName().equals("blahblahblah"))
+//                {
+//                    obj.students.remove(0);
+//                }
                 adapter = new SAdapter(MainActivity4.this,obj);
                 recyclerView.setAdapter(adapter);
                 getSupportActionBar().setTitle(obj.getClass_name());
