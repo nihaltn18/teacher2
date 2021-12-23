@@ -56,6 +56,12 @@ public class MainActivity3 extends AppCompatActivity {
                     studentsnamelist.add(student.getName());
                     attendancelist.add(false);
                 }
+                String s = studentsnamelist.get(0);
+                if(s.equals("blahblahblah"))
+                {
+                    studentsnamelist.remove(0);
+                    attendancelist.remove(0);
+                }
                 adapter = new StudentAdapter(studentsnamelist,attendancelist,MainActivity3.this);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();

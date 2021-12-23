@@ -12,7 +12,7 @@ public class ClassObj {
         Class_name = class_name;
         Class_code = class_code;
         students = new ArrayList<>();
-        students.add(new Student(0,"nihal", "blahblahblah"));
+        students.add(new Student(0,"blahblahblah", "blahblahblah"));
     }
     @Override
     public String toString() {
