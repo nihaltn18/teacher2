@@ -49,6 +49,10 @@ public class Attendance extends RecyclerView.Adapter<Attendance.ViewHolder> {
     public void onBindViewHolder(@NonNull Attendance.ViewHolder holder, int position) {
         holder.date.setText(date.get(position));
         holder.attended.setText(attended.get(position));
+        if(position==0)
+        {
+            holder.itemView.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

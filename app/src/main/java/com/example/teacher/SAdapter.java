@@ -56,6 +56,10 @@ public class SAdapter extends RecyclerView.Adapter<SAdapter.ViewHolder> {
         int tot = attendance.size()-1;
         int present = Collections.frequency(attendance,true)-1;
         double per=((double)present/tot);
+        if(position==0)
+        {
+            holder.itemView.setVisibility(View.INVISIBLE);
+        }
         if(present==0)
         {
             holder.percentage.setText("0.0");

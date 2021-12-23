@@ -58,7 +58,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull StudentAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-            holder.rollnumber.setText(Integer.toString(position+1));
+            holder.rollnumber.setText(Integer.toString(position));
             holder.name.setText(students.get(position));
             holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -75,6 +75,10 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
                     }
                 }
             });
+        if(position==0)
+        {
+            holder.itemView.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
