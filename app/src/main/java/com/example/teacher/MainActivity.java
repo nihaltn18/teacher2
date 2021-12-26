@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -62,7 +63,19 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser currentUser) {
         if(currentUser!=null)
         {
-            startActivity(new Intent(MainActivity.this,MainActivity2.class));
+            if(currentUser.getEmail().contains("bmsce.ac.in"))
+            {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+            else {
+                Toast.makeText(MainActivity.this,"Please use college mail ID",Toast.LENGTH_LONG).show();
+                FirebaseAuth.getInstance().signOut();
+                GoogleSignIn.getClient(
+                        MainActivity.this,
+                        new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+                ).signOut();
+            }
         }
     }
 
