@@ -15,6 +15,8 @@ import android.widget.ProgressBar;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,9 +43,10 @@ public class MainActivity2 extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                DataSnapshot snapshot = task.getResult();
                 ClassObj obj;
                 for(DataSnapshot snapshot1:snapshot.getChildren())
                 {
@@ -55,10 +58,6 @@ public class MainActivity2 extends AppCompatActivity {
                 progressBar.setVisibility(View.INVISIBLE);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
