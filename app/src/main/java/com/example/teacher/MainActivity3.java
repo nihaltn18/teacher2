@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -106,7 +107,7 @@ public class MainActivity3 extends AppCompatActivity {
                     student = students.get(i);
                     student.date.add(date);
                     student.attendance.add(attendancelist.get(i));
-                    if(student.getName()==studentsnamelist.get(i))
+                    if(student.getName().equals(studentsnamelist.get(i)))
                     {
                         reference2.child(Integer.toString(i)).setValue(student);
                     }
