@@ -1,7 +1,9 @@
 package com.example.teacher;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +12,30 @@ import android.widget.DatePicker;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.SuccessContinuation;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.core.SnapshotHolder;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Stack;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
     Context context;
     ArrayList<String> name;
     ArrayList<String> code;
+    ArrayList<String> tcode2,code2,name2;
+    ClassObj obj = new ClassObj();
+    int pos;
 
     public RecyclerViewAdapter(Context context, ArrayList<String> name, ArrayList<String> code) {
         this.context = context;
@@ -52,7 +67,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         code = fcode;
         notifyDataSetChanged();
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView nameView,codeView;
         int pos;
@@ -62,6 +76,76 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             codeView = itemView.findViewById(R.id.classcode2);
             pos = this.getAdapterPosition();
             itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Do You Really Want To Remove "+code.get(getAdapterPosition())+" From Your Class List?");
+                    builder.setTitle("Remove Class?!!");
+                    builder.setNegativeButton("NO!!", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.setPositiveButton("YES!!", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ArrayList<ClassObj> arrayList = new ArrayList<>();
+                            tcode2 = new ArrayList<>();
+                            code2 = new ArrayList<>();
+                            name2 = new ArrayList<>();
+                            FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(code.get(getAdapterPosition())).removeValue();
+                            FirebaseDatabase.getInstance().getReference().child("classcode").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                    DataSnapshot snapshot1 = task.getResult();
+                                    for (DataSnapshot snapshot2:snapshot1.getChildren())
+                                    {
+                                        code2.add(snapshot2.getValue(String.class));
+                                    }
+                                    pos = code2.indexOf(codeView.getText().toString());
+                                    code2.remove(pos);
+                                    FirebaseDatabase.getInstance().getReference().child("classcode").setValue(code2);
+                                }
+                            });
+                            FirebaseDatabase.getInstance().getReference().child("classname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                    DataSnapshot snapshot1 = task.getResult();
+                                    for (DataSnapshot snapshot2:snapshot1.getChildren())
+                                    {
+                                        name2.add(snapshot2.getValue(String.class));
+                                    }
+                                    name2.remove(pos);
+                                    FirebaseDatabase.getInstance().getReference().child("classname").setValue(name2);
+                                }
+                            });
+                            FirebaseDatabase.getInstance().getReference().child("teachercode").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                    DataSnapshot snapshot1 = task.getResult();
+                                    for (DataSnapshot snapshot2:snapshot1.getChildren())
+                                    {
+                                        tcode2.add(snapshot2.getValue(String.class));
+                                    }
+                                    tcode2.remove(pos);
+                                    FirebaseDatabase.getInstance().getReference().child("teachercode").setValue(tcode2).onSuccessTask(new SuccessContinuation<Void, Object>() {
+                                        @NonNull
+                                        @Override
+                                        public Task<Object> then(Void unused) throws Exception {
+                                            context.startActivity(new Intent(context,MainActivity2.class));
+                                            return null;
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                    builder.show();
+                    return true;
+                }
+            });
         }
 
         @Override

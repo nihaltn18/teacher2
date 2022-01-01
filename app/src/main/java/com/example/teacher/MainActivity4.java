@@ -35,7 +35,7 @@ public class MainActivity4 extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 obj = task.getResult().getValue(ClassObj.class);
-                adapter = new SAdapter(MainActivity4.this,obj);
+                adapter = new SAdapter(MainActivity4.this,obj,code);
                 recyclerView.setAdapter(adapter);
                 getSupportActionBar().setTitle(obj.getClass_name());
                 adapter.notifyDataSetChanged();

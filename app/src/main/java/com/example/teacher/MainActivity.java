@@ -25,6 +25,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,19 +66,25 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser currentUser) {
         if(currentUser!=null)
         {
-            if(currentUser.getEmail().contains("bmsce.ac.in"))
-            {
+//            ArrayList<String> arrayList = new ArrayList<>();
+//            arrayList.add("blah");
+//            FirebaseDatabase.getInstance().getReference().child("classname").setValue(arrayList);
+//            FirebaseDatabase.getInstance().getReference().child("teachercode").setValue(arrayList);
+//            FirebaseDatabase.getInstance().getReference().child("classcode").setValue(arrayList);
+
+//            if(currentUser.getEmail().contains("bmsce.ac.in"))
+//            {
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent);
-            }
-            else {
-                Toast.makeText(MainActivity.this,"Please use college mail ID",Toast.LENGTH_LONG).show();
-                FirebaseAuth.getInstance().signOut();
-                GoogleSignIn.getClient(
-                        MainActivity.this,
-                        new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
-                ).signOut();
-            }
+//            }
+//            else {
+//                Toast.makeText(MainActivity.this,"Please use college mail ID",Toast.LENGTH_LONG).show();
+//                FirebaseAuth.getInstance().signOut();
+//                GoogleSignIn.getClient(
+//                        MainActivity.this,
+//                        new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+//                ).signOut();
+//            }
         }
     }
 
