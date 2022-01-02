@@ -72,19 +72,19 @@ public class MainActivity extends AppCompatActivity {
 //            FirebaseDatabase.getInstance().getReference().child("teachercode").setValue(arrayList);
 //            FirebaseDatabase.getInstance().getReference().child("classcode").setValue(arrayList);
 
-            if(currentUser.getEmail().contains("bmsce.ac.in"))
-            {
+//            if(currentUser.getEmail().contains("bmsce.ac.in"))
+//            {
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent);
-            }
-            else {
-                Toast.makeText(MainActivity.this,"Please use college mail ID",Toast.LENGTH_LONG).show();
-                FirebaseAuth.getInstance().signOut();
-                GoogleSignIn.getClient(
-                        MainActivity.this,
-                        new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
-                ).signOut();
-            }
+//            }
+//            else {
+//                Toast.makeText(MainActivity.this,"Please use college mail ID",Toast.LENGTH_LONG).show();
+//                FirebaseAuth.getInstance().signOut();
+//                GoogleSignIn.getClient(
+//                        MainActivity.this,
+//                        new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+//                ).signOut();
+//            }
         }
     }
 

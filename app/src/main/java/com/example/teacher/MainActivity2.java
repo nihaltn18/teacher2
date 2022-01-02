@@ -44,13 +44,6 @@ public class MainActivity2 extends AppCompatActivity {
         // Declaring the animation view
         LottieAnimationView animationView
                 = findViewById(R.id.loading_anime);
-        animationView
-                .addAnimatorUpdateListener(
-                        (animation) -> {
-                            // Do something.
-                        });
-        animationView
-                .playAnimation();
 
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
@@ -66,9 +59,7 @@ public class MainActivity2 extends AppCompatActivity {
                     name.add(obj.getClass_name());
                     code.add(obj.getClass_code());
                 }
-                if (animationView.isAnimating()) {
-                    animationView.setVisibility(View.INVISIBLE);
-                }
+                animationView.setVisibility(View.INVISIBLE);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

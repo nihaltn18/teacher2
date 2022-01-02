@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,12 +33,9 @@ public class MainActivity4 extends AppCompatActivity {
         code = intent.getStringExtra("code");
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity4.this));
+        LottieAnimationView animationView
+                = findViewById(R.id.anim4);
 
-        Toast toast = new Toast(MainActivity4.this);
-        View view = getLayoutInflater().inflate(R.layout.student_toast,findViewById(R.id.toastl));
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
         FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(code).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -46,6 +44,7 @@ public class MainActivity4 extends AppCompatActivity {
                 recyclerView.setAdapter(adapter);
                 getSupportActionBar().setTitle(obj.getClass_name());
                 adapter.notifyDataSetChanged();
+                animationView.setVisibility(View.INVISIBLE);
             }
         });
 
