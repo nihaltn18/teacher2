@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,6 +41,17 @@ public class MainActivity2 extends AppCompatActivity {
         name = new ArrayList<>();
         code = new ArrayList<>();
         adapter = new RecyclerViewAdapter(MainActivity2.this,name,code);
+        // Declaring the animation view
+        LottieAnimationView animationView
+                = findViewById(R.id.loading_anime);
+        animationView
+                .addAnimatorUpdateListener(
+                        (animation) -> {
+                            // Do something.
+                        });
+        animationView
+                .playAnimation();
+
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -54,8 +66,9 @@ public class MainActivity2 extends AppCompatActivity {
                     name.add(obj.getClass_name());
                     code.add(obj.getClass_code());
                 }
-                ProgressBar progressBar = findViewById(R.id.progressBar);
-                progressBar.setVisibility(View.INVISIBLE);
+                if (animationView.isAnimating()) {
+                    animationView.setVisibility(View.INVISIBLE);
+                }
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

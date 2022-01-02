@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -113,6 +115,11 @@ public class addclass extends AppCompatActivity{
                     reference2.setValue(codelist);
                     FirebaseDatabase.getInstance().getReference().child("teachercode").setValue(teachercodelist);
                     FirebaseDatabase.getInstance().getReference().child("classname").setValue(classnames);
+                    View inflater = getLayoutInflater().inflate(R.layout.success_toast,(ViewGroup)findViewById(R.id.layout2));
+                    Toast toast = new Toast(addclass.this);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setView(inflater);
+                    toast.show();
 
                 }
                 startActivity(new Intent(addclass.this,MainActivity2.class));

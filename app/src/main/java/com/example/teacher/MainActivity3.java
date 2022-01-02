@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,11 @@ public class MainActivity3 extends AppCompatActivity {
         attendancelist = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity3.this));
+        View view = getLayoutInflater().inflate(R.layout.done_toast,findViewById(R.id.done));
+        Toast toast = new Toast(MainActivity3.this);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(view);
+        toast.show();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(classcode);
         reference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
