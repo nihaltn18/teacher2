@@ -89,40 +89,43 @@ public class addclass extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 //add new class
-
-                if(codelist.contains(classcode.getText().toString()))
+                if(!(classcode.getText().toString().equals(""))&&!(classname.getText().toString().equals("")))
                 {
-                    //class already exist
-                    Log.d(TAG, "onClick() returned: " + "cant add");
-                    Toast.makeText(addclass.this, "Class already exist", Toast.LENGTH_LONG).show();
+                    if (codelist.contains(classcode.getText().toString())) {
+                        //class already exist
+                        Log.d(TAG, "onClick() returned: " + "cant add");
+                        Toast.makeText(addclass.this, "Class already exist", Toast.LENGTH_LONG).show();
+                    } else {
+                        //class can be created
+                        Log.d(TAG, "onClick() returned: " + "added");
+                        ClassObj cls = new ClassObj(classname.getText().toString(), classcode.getText().toString());
+                        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference();
+                        reference1 = reference1.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        reference1 = reference1.child(classcode.getText().toString());
+
+                        //add some info such as ClassObj Object or Other details into node reference1
+                        reference1.setValue(cls);
+
+                        DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("classcode");
+                        codelist.add(classcode.getText().toString());
+                        teachercodelist.add(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        classnames.add(classname.getText().toString());
+                        reference2.setValue(codelist);
+                        FirebaseDatabase.getInstance().getReference().child("teachercode").setValue(teachercodelist);
+                        FirebaseDatabase.getInstance().getReference().child("classname").setValue(classnames);
+                        View inflater = getLayoutInflater().inflate(R.layout.success_toast, (ViewGroup) findViewById(R.id.layout2));
+                        Toast toast = new Toast(addclass.this);
+                        toast.setDuration(Toast.LENGTH_LONG);
+                        toast.setView(inflater);
+                        toast.show();
+
+                    }
+                    startActivity(new Intent(addclass.this, MainActivity2.class));
                 }
                 else
                 {
-                    //class can be created
-                    Log.d(TAG, "onClick() returned: " + "added");
-                    ClassObj cls = new ClassObj(classname.getText().toString(),classcode.getText().toString());
-                    DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference();
-                    reference1 = reference1.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    reference1 = reference1.child(classcode.getText().toString());
-
-                    //add some info such as ClassObj Object or Other details into node reference1
-                    reference1.setValue(cls);
-
-                    DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("classcode");
-                    codelist.add(classcode.getText().toString());
-                    teachercodelist.add(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    classnames.add(classname.getText().toString());
-                    reference2.setValue(codelist);
-                    FirebaseDatabase.getInstance().getReference().child("teachercode").setValue(teachercodelist);
-                    FirebaseDatabase.getInstance().getReference().child("classname").setValue(classnames);
-                    View inflater = getLayoutInflater().inflate(R.layout.success_toast,(ViewGroup)findViewById(R.id.layout2));
-                    Toast toast = new Toast(addclass.this);
-                    toast.setDuration(Toast.LENGTH_LONG);
-                    toast.setView(inflater);
-                    toast.show();
-
+                    Toast.makeText(addclass.this,"None Of The Fields Can Be Empty",Toast.LENGTH_LONG).show();
                 }
-                startActivity(new Intent(addclass.this,MainActivity2.class));
             }
         });
 
