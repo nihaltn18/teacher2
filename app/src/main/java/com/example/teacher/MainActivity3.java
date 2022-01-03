@@ -48,7 +48,7 @@ public class MainActivity3 extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity3.this));
         View view = getLayoutInflater().inflate(R.layout.done_toast,findViewById(R.id.done));
         Toast toast = new Toast(MainActivity3.this);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(view);
         toast.show();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(classcode);
