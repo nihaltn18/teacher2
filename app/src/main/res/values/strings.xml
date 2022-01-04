@@ -6,4 +6,5 @@
     <string name="className">Class Name</string>
     <string name="classCode">Class Code</string>
     <string name="present">Present</string>
+    <string name="todo">TODO</string>
 </resources>

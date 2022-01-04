@@ -9,13 +9,7 @@
         android:icon="@drawable/searchclass"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         />
-    <item
-        android:title="add"
-        android:id="@+id/addClass"
-        android:orderInCategory="100"
-        app:showAsAction="always"
-        android:icon="@drawable/addclass"
-        />
+    
     <item
         android:title="@string/signout"
         android:id="@+id/signout"

@@ -18,6 +18,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +33,7 @@ public class MainActivity2 extends AppCompatActivity {
     ArrayList<String> name;
     ArrayList<String> code;
     RecyclerViewAdapter adapter;
+    FloatingActionButton actionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,13 @@ public class MainActivity2 extends AppCompatActivity {
         LottieAnimationView animationView
                 = findViewById(R.id.loading_anime);
 
+        actionButton = findViewById(R.id.floatingButton1);
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity2.this,addclass.class));
+            }
+        });
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -109,10 +118,6 @@ public class MainActivity2 extends AppCompatActivity {
             case R.id.searchclass:
                 //TODO (what to do when user clicks on search bar)
 
-                break;
-            case R.id.addClass:
-                //what to do when user clicks on add bar
-                startActivity(new Intent(MainActivity2.this,addclass.class));
                 break;
             case R.id.signout:
                 //signout
