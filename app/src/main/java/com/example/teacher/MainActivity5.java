@@ -16,7 +16,8 @@ public class MainActivity5 extends AppCompatActivity {
     RecyclerView recyclerView;
     Attendance adapter;
     ArrayList<String> date,attendance;
-    String name;
+    String name,classCode;
+    int spos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +35,13 @@ public class MainActivity5 extends AppCompatActivity {
         Intent intent = getIntent();
         date = intent.getStringArrayListExtra("date");
         name = intent.getStringExtra("name");
+        classCode = intent.getStringExtra("code");
+        spos = intent.getIntExtra("pos",0);
         getSupportActionBar().setTitle(name);
         if(date!=null)
         {
             attendance = intent.getStringArrayListExtra("attendance");
-            adapter = new Attendance(date,attendance,MainActivity5.this);
+            adapter = new Attendance(date,attendance,MainActivity5.this,classCode,spos);
         }
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();

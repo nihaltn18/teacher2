@@ -30,9 +30,9 @@ public class SAdapter extends RecyclerView.Adapter<SAdapter.ViewHolder> {
     String classCode;
     int pos;
 
-    public SAdapter(Context context, ClassObj obj,String className) {
+    public SAdapter(Context context, ClassObj obj,String classCode) {
         this.context = context;
-        this.classCode = className;
+        this.classCode = classCode;
         this.obj = obj;
         students = obj.getStudents();
     }
@@ -186,6 +186,8 @@ public class SAdapter extends RecyclerView.Adapter<SAdapter.ViewHolder> {
             ArrayList<String> date = obj.getStudents().get(getAdapterPosition()).getDate();
             intent.putStringArrayListExtra("date",date);
             intent.putStringArrayListExtra("attendance",attendance);
+            intent.putExtra("code",classCode);
+            intent.putExtra("pos",getAdapterPosition());
             intent.putExtra("name",obj.getStudents().get(getAdapterPosition()).getName());
             context.startActivity(intent);
 
