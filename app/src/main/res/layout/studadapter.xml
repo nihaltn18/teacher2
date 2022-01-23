@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#e07a5f"
+            android:background="#c36b85"
             android:orientation="horizontal">
 
             <TextView
@@ -29,7 +29,7 @@
                 android:gravity="center"
                 android:paddingLeft="3dp"
                 android:text="TextView"
-                android:textColor="#3d405b"
+                android:textColor="#fcf7ed"
                 android:textSize="24sp" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:paddingRight="3dp"
                 android:text="TextView"
                 android:textAlignment="viewEnd"
-                android:textColor="#3d405b"
+                android:textColor="#fcf7ed"
                 android:textSize="24sp" />
 
         </LinearLayout>

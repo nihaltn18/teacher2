@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0A969"
+    android:background="#fad4c0"
     tools:context=".MainActivity2">
 
 
@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -25,11 +25,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
+        android:background="#b09e99"
+        android:backgroundTint="#b09e99"
+        android:contentDescription="@string/todo"
         android:src="@drawable/addclass"
+        app:backgroundTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:contentDescription="@string/todo" />
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading_anime"
@@ -41,8 +44,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/loading"
-        />
+        app:lottie_rawRes="@raw/loading" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@ public class MainActivity5 extends AppCompatActivity {
 
         Toast toast = new Toast(MainActivity5.this);
         View view = getLayoutInflater().inflate(R.layout.attendance_toast,findViewById(R.id.attend));
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(view);
         toast.show();
 

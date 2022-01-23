@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F2B1A1"
     tools:context=".MainActivity">
 
     <com.google.android.gms.common.SignInButton
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:text="@string/app_name"
+        android:textColor="#0A1215"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
