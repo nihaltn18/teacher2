@@ -91,6 +91,13 @@ public class MainActivity3 extends AppCompatActivity {
                 intent.putExtra("code",classcode);
                 intent.putExtra("tcode",FirebaseAuth.getInstance().getCurrentUser().getUid());
                 startActivity(intent);
+            case R.id.share:
+                Intent intent1 = new Intent();
+                intent1.setAction(Intent.ACTION_SEND);
+                intent1.putExtra(Intent.EXTRA_TEXT,"https://www.student.com/"+obj.getClass_code());
+                intent1.setType("text/plai");
+                intent1.setPackage("com.whatsapp");
+                startActivity(intent1);
         }
         return super.onOptionsItemSelected(item);
     }
